@@ -17,6 +17,6 @@ public class WeatherData {
     private MainData main;
     private WindData wind;
     private CloudData cloud;
-    private List<WeatherData> weather;
+    private List<Phenomenon> weather;
 
 }
