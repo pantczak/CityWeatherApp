@@ -1,4 +1,4 @@
-package pl.nosql.weather.CityWeatherApp;
+package pl.nosql.weather.cityweatherapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

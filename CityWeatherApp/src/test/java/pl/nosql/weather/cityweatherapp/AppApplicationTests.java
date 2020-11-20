@@ -1,4 +1,4 @@
-package pl.nosql.weather.CityWeatherApp;
+package pl.nosql.weather.cityweatherapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
