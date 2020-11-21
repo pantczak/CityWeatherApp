@@ -1,10 +1,12 @@
 package pl.nosql.weather.cityweatherapp.model;
 
 import lombok.Data;
+import org.springframework.data.cassandra.core.mapping.Table;
 
 @Data
-public class CityData {
-    private int id;
+@Table
+class CityData {
+    private int cityId;
     private String name;
     private String findName;
     private String country;

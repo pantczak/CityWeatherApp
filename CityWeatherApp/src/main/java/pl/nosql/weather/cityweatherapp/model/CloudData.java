@@ -3,6 +3,6 @@ package pl.nosql.weather.cityweatherapp.model;
 import lombok.Data;
 
 @Data
-public class CloudData {
+class CloudData {
     private int all;
 }

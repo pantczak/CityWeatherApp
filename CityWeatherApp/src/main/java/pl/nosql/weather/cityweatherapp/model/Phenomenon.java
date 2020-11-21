@@ -3,7 +3,7 @@ package pl.nosql.weather.cityweatherapp.model;
 import lombok.Data;
 
 @Data
-public class Phenomenon {
+class Phenomenon {
     private int id;
     private String type;
     private String description;
