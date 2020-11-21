@@ -1,6 +1,7 @@
 package pl.nosql.weather.cityweatherapp.repository;
 
 import org.springframework.data.cassandra.repository.CassandraRepository;
+import org.springframework.lang.NonNullApi;
 import pl.nosql.weather.cityweatherapp.model.WeatherData;
 
 import java.util.Date;
