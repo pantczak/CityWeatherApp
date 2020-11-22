@@ -23,6 +23,10 @@ public class Service {
         return weatherRepository.findAll();
     }
 
+    public <S extends WeatherData> S saveData(S entity) { //
+        return weatherRepository.save(entity);
+    }
+
     public WeatherData getById(int id) {
         return weatherRepository.getById(id);
     }
@@ -41,13 +45,5 @@ public class Service {
 
     public List<WeatherData> getByCityIdAndTimeBetween(int cityId, Date dateStart, Date dateEnd) {
         return weatherRepository.getByCityIdAndTimeBetween(cityId, dateStart, dateEnd);
-    }
-
-    public long count() {
-        return weatherRepository.count();
-    }
-
-    public void deleteAll() {
-        weatherRepository.deleteAll();
     }
 }

@@ -1,12 +1,12 @@
 package pl.nosql.weather.cityweatherapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import pl.nosql.weather.cityweatherapp.model.WeatherData;
 import pl.nosql.weather.cityweatherapp.service.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -36,6 +36,27 @@ public class WeatherController {
     @GetMapping("weather/city/{id}")
     List<WeatherData> getByCityId(@PathVariable("id") int id){
         return service.getByCityId(id);
+    }
+
+    @GetMapping("weather/city/{id}&{dateStart}&{DateEnd/")
+    List<WeatherData> getByFindNameAndTimeBetween(@PathVariable("id") int id, @PathVariable("dateStart") Date dateStart,@PathVariable("dateStart") Date dateEnd){
+        return service.getByCityIdAndTimeBetween(id,dateStart,dateEnd);
+    }
+
+    @PostMapping(value = "/weather/add", consumes = "application/json",produces = "application/json")
+    void saveData(@RequestBody WeatherData weatherData){
+        service.saveData(weatherData);
+    }
+
+    @DeleteMapping("/weather/{id}")
+    void deleteData(@PathVariable("id")int id){
+        this.service.deleteById(id);
+    }
+
+    @PutMapping(path = "weather/update/{id}", consumes = "application/json", produces = "application/json")
+    ResponseEntity<WeatherData> updateData(@PathVariable("id") int id,@RequestBody WeatherData weatherData){
+        return null;
+        //TODO FILL
     }
 
 
