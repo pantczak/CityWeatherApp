@@ -22,13 +22,13 @@ public class WeatherController {
 
 
     @GetMapping("/weather")
-    public ResponseEntity<List<Data>> getAllWeatherData(@RequestParam(required = false) String findName) {
+    public ResponseEntity<List<Data>> getAllWeatherData(@RequestParam(required = false) String findname) {
         try {
             List<Data> dataList = new ArrayList<>();
-            if (findName == null)
+            if (findname == null)
                 dataList.addAll(weatherRepository.findAll());
             else
-                dataList.addAll(weatherRepository.findByCityFindname(findName.toUpperCase()));
+                dataList.addAll(weatherRepository.findByCityFindname(findname.toUpperCase()));
             if (dataList.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
@@ -39,7 +39,7 @@ public class WeatherController {
     }
 
     @GetMapping("/weather/{id}")
-    public ResponseEntity<Data> getById(@PathVariable("id") Integer id) {
+    public ResponseEntity<Data> getById(@PathVariable("id") Long id) {
         Optional<Data> weatherData = weatherRepository.findById(id);
         if (weatherData.isPresent()) {
             return new ResponseEntity<>(weatherData.get(), HttpStatus.OK);
@@ -61,7 +61,7 @@ public class WeatherController {
     }
 
     @PutMapping("/weather/{id}")
-    public ResponseEntity<Data> updateWeatherData(@PathVariable("id") Integer id, @RequestBody Data weatherData) {
+    public ResponseEntity<Data> updateWeatherData(@PathVariable("id") Long id, @RequestBody Data weatherData) {
         Optional<Data> foundData = weatherRepository.findById(id);
 
         if (foundData.isPresent()){
@@ -80,7 +80,7 @@ public class WeatherController {
     }
 
     @DeleteMapping("/weather/{id}")
-    public ResponseEntity<HttpStatus> deleteData(@PathVariable("id") Integer id) {
+    public ResponseEntity<HttpStatus> deleteData(@PathVariable("id") Long id) {
         try {
             weatherRepository.deleteById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

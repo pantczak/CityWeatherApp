@@ -1,5 +1,6 @@
 package pl.nosql.weather.cityweatherapp.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
 
@@ -9,8 +10,9 @@ import java.util.List;
 @Table
 public class Data {
 
+    @Id
     @PrimaryKey
-    private final Integer id;
+    private final Long id;
     private City city;
     private Date time;
     private MainData main;
@@ -18,7 +20,7 @@ public class Data {
     private Cloud clouds;
     private List<Phenomenon> weather;
 
-    public Data(Integer id, City city, Date time, MainData main, Wind wind,
+    public Data(Long id, City city, Date time, MainData main, Wind wind,
                 Cloud clouds, List<Phenomenon> weather) {
         this.id = id;
         this.city = city;
@@ -29,7 +31,7 @@ public class Data {
         this.weather = weather;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

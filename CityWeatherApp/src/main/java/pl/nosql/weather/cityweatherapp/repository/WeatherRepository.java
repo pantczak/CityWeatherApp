@@ -6,7 +6,7 @@ import pl.nosql.weather.cityweatherapp.model.Data;
 import java.util.List;
 
 
-public interface WeatherRepository extends CassandraRepository<Data, Integer> {
+public interface WeatherRepository extends CassandraRepository<Data, Long> {
 
     List<Data> findByCityFindname (String findName);
 }
