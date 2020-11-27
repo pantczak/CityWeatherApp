@@ -3,10 +3,10 @@ package pl.nosql.weather.cityweatherapp;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 class AppApplicationTests {
 
-	@Test
+	//@Test
 	void contextLoads() {
 	}
 
