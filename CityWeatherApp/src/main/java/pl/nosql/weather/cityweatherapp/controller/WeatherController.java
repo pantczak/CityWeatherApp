@@ -70,7 +70,7 @@ public class WeatherController {
             _Data.setTime(weatherData.getTime());
             _Data.setMain(weatherData.getMain());
             _Data.setClouds(weatherData.getClouds());
-            _Data.setClouds(weatherData.getClouds());
+            _Data.setWind(weatherData.getWind());
             _Data.setWeather(weatherData.getWeather());
 
             return new ResponseEntity<>(weatherRepository.save(_Data),HttpStatus.OK);
