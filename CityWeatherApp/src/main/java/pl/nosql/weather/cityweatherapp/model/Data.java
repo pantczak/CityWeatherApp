@@ -4,23 +4,26 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 
 @Table
 public class Data {
 
+    private static long counter =0;
+
     @Id
     @PrimaryKey
     private final Long id;
     private City city;
-    private Date time;
+    private Instant time;
     private MainData main;
     private Wind wind;
     private Cloud clouds;
     private List<Phenomenon> weather;
 
-    public Data(Long id, City city, Date time, MainData main, Wind wind,
+    public Data(Long id, City city, Instant time, MainData main, Wind wind,
                 Cloud clouds, List<Phenomenon> weather) {
         this.id = id;
         this.city = city;
@@ -43,11 +46,11 @@ public class Data {
         this.city = city;
     }
 
-    public Date getTime() {
+    public Instant getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(Instant time) {
         this.time = time;
     }
 
