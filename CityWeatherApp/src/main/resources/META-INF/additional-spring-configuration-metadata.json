@@ -1,8 +1,8 @@
 {
   "properties": [
     {
-      "name": "spring.data.cassandra.entity-base-package",
+      "name": "spring.data.cassandra.basepackages",
       "type": "java.lang.String",
-      "description": "Description for spring.data.cassandra.entity-base-package."
-  }
-] }
+      "description": "Description for spring.data.cassandra.basepackages."
+    }
+  ] }
