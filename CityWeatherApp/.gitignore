@@ -34,3 +34,5 @@ build/
 
 ### USER ###
 /target/
+/venv/
+/Startup/venv/

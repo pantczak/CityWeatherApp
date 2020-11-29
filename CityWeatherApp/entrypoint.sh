@@ -40,7 +40,7 @@ done
     echo "$0: Cassandra cluster ready: executing cql scripts found in $INIT_DIR"
     for f in $(find . -type f -name "*.cql" -print | sort); do
         echo "$0: running $f"
-        SOURCE '$f';
+        SOURCE \'$f\';
         echo "$0: $f executed"
     done
     # mark things as initialized (in case /var/lib/cassandra was mapped to a local folder)

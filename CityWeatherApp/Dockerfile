@@ -2,7 +2,6 @@ FROM cassandra:3.11.9
 
 ENV LANG C.UTF-8
 
-
 COPY *.cql /docker-entrypoint-initdb.d/
 
 COPY entrypoint.sh /

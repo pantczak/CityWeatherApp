@@ -22,13 +22,9 @@ public class WeatherController {
 
 
     @GetMapping("/weather")
-    public ResponseEntity<List<Data>> getAllWeatherData(@RequestParam(required = false) String findname) {
+    public ResponseEntity<List<Data>> getAllWeatherData() {
         try {
-            List<Data> dataList = new ArrayList<>();
-            if (findname == null)
-                dataList.addAll(weatherRepository.findAll());
-            else
-                dataList.addAll(weatherRepository.findByCityFindname(findname.toUpperCase()));
+            List<Data> dataList = new ArrayList<>(weatherRepository.findAll());
             if (dataList.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }

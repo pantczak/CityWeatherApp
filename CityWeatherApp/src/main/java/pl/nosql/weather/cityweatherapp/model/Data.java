@@ -5,13 +5,10 @@ import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
 
 import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 
 @Table
 public class Data {
-
-    private static long counter =0;
 
     @Id
     @PrimaryKey
@@ -23,8 +20,7 @@ public class Data {
     private Cloud clouds;
     private List<Phenomenon> weather;
 
-    public Data(Long id, City city, Instant time, MainData main, Wind wind,
-                Cloud clouds, List<Phenomenon> weather) {
+    public Data(Long id, City city, Instant time, MainData main, Wind wind, Cloud clouds, List<Phenomenon> weather) {
         this.id = id;
         this.city = city;
         this.time = time;
