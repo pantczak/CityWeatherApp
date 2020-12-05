@@ -79,7 +79,7 @@ public class WeatherController {
     public ResponseEntity<HttpStatus> deleteData(@PathVariable("id") Long id) {
         try {
             weatherRepository.deleteById(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }

@@ -1,6 +1,5 @@
 import json
 import requests
-import uuid
 
 with open("../../Data/weather_16.json")as f:
     data = json_data = [json.loads(line) for line in f]
