@@ -1,10 +1,58 @@
 version: '3'
+networks:
+  cassandra:
+    driver: bridge
 services:
-  mycassandra:
-    image: cassandra
-    container_name: mycassandra
+  cassandra_seed:
+    image: cassandra:3.11.8
+    container_name: cassandra_seed
+    networks:
+      - cassandra
     ports:
-    - "9042:9042"
+      - "9042:9042"
+    environment: &env
+      CASSANDRA_SEEDS: "cassandra_seed"
+      CLUSTER_NAME: "WeatherCluster"
+      CASSANDRA_DC: "WTH"
+      CASSANDRA_RACK: "W1"
+      CASSANDRA_ENDPOINT_SNITCH: "GossipingPropertyFileSnitch"
+    healthcheck:
+      test: ["CMD", "cqlsh", "-e", "describe keyspaces" ]
+      interval: 5s
+      timeout: 5s
+      retries: 60
+
+  cassandra_node_1:
+    image: cassandra:3.11.8
+    container_name: cassandra_node_1
+    networks:
+      - cassandra
+    environment: *env
+    depends_on:
+      cassandra_seed:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "cqlsh", "-e", "describe keyspaces" ]
+      interval: 5s
+      timeout: 5s
+      retries: 60
+
+  cassandra_node_2:
+    image: cassandra:3.11.8
+    container_name: cassandra_node_2
+    networks:
+      - cassandra
+    environment: *env
+    depends_on:
+      cassandra_node_1:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "cqlsh", "-e", "describe keyspaces" ]
+      interval: 5s
+      timeout: 5s
+      retries: 60
+
+
 
 #  springbootapp:
 #    ports:
