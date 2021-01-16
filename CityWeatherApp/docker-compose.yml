@@ -51,17 +51,17 @@ services:
       interval: 5s
       timeout: 5s
       retries: 60
-
-
-
 #  springbootapp:
+#    container_name: rest_api
+#    networks:
+#      - cassandra
 #    ports:
 #    - "8080:8080"
-#    environment:
-#      CASSANDRA_CONTACTPOINTS: 127.0.0.1
-#      CASSANDRA_PORT: 7000
 #    build:
 #      context: .
 #      args:
-#        JAR_FILE: /CityWeatherApp-0.0.1-SNAPSHOT.jar
+#        JAR_FILE: target/CityWeatherApp-1.jar
+#    depends_on:
+#      cassandra_node_2:
+#        condition: service_healthy
 #    restart: always

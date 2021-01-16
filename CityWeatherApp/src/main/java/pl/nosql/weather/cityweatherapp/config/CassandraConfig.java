@@ -67,7 +67,7 @@ public class CassandraConfig extends AbstractCassandraConfiguration {
     @Override
     protected List<CreateKeyspaceSpecification> getKeyspaceCreations() {
         final CreateKeyspaceSpecification specification = CreateKeyspaceSpecification.createKeyspace(keyspace)
-                .ifNotExists().withSimpleReplication();
+                .ifNotExists().withSimpleReplication(3);
         return List.of(specification);
     }
 
