@@ -12,7 +12,6 @@ services:
       - "9042:9042"
     environment: &env
       CASSANDRA_SEEDS: "cassandra_seed"
-      CLUSTER_NAME: "WeatherCluster"
       CASSANDRA_DC: "WTH"
       CASSANDRA_RACK: "W1"
       CASSANDRA_ENDPOINT_SNITCH: "GossipingPropertyFileSnitch"
