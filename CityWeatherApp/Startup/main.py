@@ -7,5 +7,8 @@ with open("../../Data/weather_16.json")as f:
     for i in data:
         i["id"] = count
         count += 1
-        r = requests.post("http://localhost:8080/api/weather", json=i)
-        print(r.status_code, r.reason)
+        if count <= 12764:
+            r = requests.post("http://localhost:8080/api/weather", json=i)
+            print(r.status_code, r.reason)
+        else:
+            break
